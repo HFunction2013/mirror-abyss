@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "bbb",
+    "bvb",
+    "bbb"
+  ],
+  "key": {
+    "b": {
+      "item": "mirror_abyss:watcher_brick"
+    },
+    "v": {
+      "item": "mirror_abyss:void_eye"
+    }
+  },
+  "result": {
+    "item": "mirror_abyss:watcher_altar"
+  }
+}

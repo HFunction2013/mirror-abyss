@@ -1,0 +1,25 @@
+# Gradle
+.gradle/
+build/
+out/
+classes/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+.settings/
+.classpath
+.project
+bin/
+
+# Forge run dirs
+run/
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local artifacts
+mcmodsrepo/

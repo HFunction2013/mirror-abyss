@@ -1,0 +1,7 @@
+{
+  "type": "mirror_abyss:watchers_ruin",
+  "biomes": "#mirror_abyss:has_structure/watchers_ruin",
+  "step": "surface_structures",
+  "spawn_overrides": {},
+  "terrain_adaptation": "beard_thin"
+}

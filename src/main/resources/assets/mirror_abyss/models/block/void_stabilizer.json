@@ -1,0 +1,35 @@
+{
+  "parent": "minecraft:block/block",
+  "textures": {
+    "side": "mirror_abyss:block/void_stabilizer_side",
+    "top": "mirror_abyss:block/void_stabilizer_top",
+    "bottom": "mirror_abyss:block/void_stabilizer_bottom",
+    "core": "mirror_abyss:block/void_stabilizer"
+  },
+  "elements": [
+    {
+      "from": [0, 0, 0],
+      "to": [16, 12, 16],
+      "faces": {
+        "north": { "uv": [0, 4, 16, 16], "texture": "#side" },
+        "south": { "uv": [0, 4, 16, 16], "texture": "#side" },
+        "east":  { "uv": [0, 4, 16, 16], "texture": "#side" },
+        "west":  { "uv": [0, 4, 16, 16], "texture": "#side" },
+        "up":    { "uv": [0, 0, 16, 16], "texture": "#top" },
+        "down":  { "uv": [0, 0, 16, 16], "texture": "#bottom" }
+      }
+    },
+    {
+      "from": [4, 4, 4],
+      "to": [12, 14, 12],
+      "faces": {
+        "north": { "uv": [0, 0, 8, 10], "texture": "#core" },
+        "south": { "uv": [0, 0, 8, 10], "texture": "#core" },
+        "east":  { "uv": [0, 0, 8, 10], "texture": "#core" },
+        "west":  { "uv": [0, 0, 8, 10], "texture": "#core" },
+        "up":    { "uv": [0, 0, 8, 8], "texture": "#top" },
+        "down":  { "uv": [0, 0, 8, 8], "texture": "#core" }
+      }
+    }
+  ]
+}

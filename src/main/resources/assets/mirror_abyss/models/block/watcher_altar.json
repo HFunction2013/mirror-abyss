@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "mirror_abyss:block/watcher_altar_side",
+    "north": "mirror_abyss:block/watcher_altar_side",
+    "south": "mirror_abyss:block/watcher_altar_side",
+    "east": "mirror_abyss:block/watcher_altar_side",
+    "west": "mirror_abyss:block/watcher_altar_side",
+    "up": "mirror_abyss:block/watcher_altar_top",
+    "down": "mirror_abyss:block/watcher_altar_side"
+  }
+}

@@ -1,0 +1,30 @@
+modLoader="javafml"
+loaderVersion="${loader_version_range}"
+license="${mod_license}"
+issueTrackerURL="https://github.com/HFunction2013/mirror-abyss/issues"
+
+[[mods]]
+modId="${mod_id}"
+version="${file.jarVersion}"
+displayName="${mod_name}"
+authors="${mod_authors}"
+description='''${mod_description}
+
+Mine the deep earth to find mirror shards, build the Mirror Portal and enter the Mirror Abyss -
+the last remnant of the extinct Abyss Watcher civilization. Survive mirage walkers, void devourers
+and crack spiders, solve light-refraction puzzles, and finally face the Mirror Eater in the Void
+Sanctum. Choose between sealing the void (peace ending) or fusing reality (chaos ending).'''
+
+[[dependencies.${mod_id}]]
+modId="forge"
+mandatory=true
+versionRange="${forge_version_range}"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="minecraft"
+mandatory=true
+versionRange="${minecraft_version_range}"
+ordering="NONE"
+side="BOTH"

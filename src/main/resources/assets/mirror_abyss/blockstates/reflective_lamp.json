@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "lit=true": {
+      "model": "mirror_abyss:block/reflective_lamp"
+    },
+    "lit=false": {
+      "model": "mirror_abyss:block/reflective_lamp_off"
+    }
+  }
+}

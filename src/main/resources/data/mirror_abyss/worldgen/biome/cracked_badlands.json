@@ -1,0 +1,46 @@
+{
+  "has_precipitation": false,
+  "temperature": -0.3,
+  "downfall": 0.0,
+  "effects": {
+    "sky_color": 7565936,
+    "fog_color": 3357480,
+    "water_color": 2171460,
+    "water_fog_color": 1375770,
+    "grass_color": 5521212,
+    "foliage_color": 5521212
+  },
+  "spawners": {
+    "monster": [
+      {
+        "type": "mirror_abyss:crack_spider",
+        "weight": 100,
+        "minCount": 2,
+        "maxCount": 4
+      },
+      {
+        "type": "mirror_abyss:mirage_walker",
+        "weight": 60,
+        "minCount": 1,
+        "maxCount": 2
+      }
+    ]
+  },
+  "spawn_costs": {},
+  "carvers": {},
+  "features": [
+    [],
+    [],
+    [],
+    [],
+    [
+      "mirror_abyss:ore_abyss_ore"
+    ],
+    [
+      "mirror_abyss:mirror_shard_cluster"
+    ],
+    [],
+    [],
+    []
+  ]
+}

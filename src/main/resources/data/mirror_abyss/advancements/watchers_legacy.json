@@ -1,0 +1,41 @@
+{
+  "display": {
+    "icon": {
+      "item": "mirror_abyss:watcher_brick"
+    },
+    "title": {
+      "translate": "advancements.mirror_abyss.watchers_legacy.title"
+    },
+    "description": {
+      "translate": "advancements.mirror_abyss.watchers_legacy.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "mirror_abyss:mirror_world",
+  "criteria": {
+    "enter_void_ruins": {
+      "trigger": "minecraft:location",
+      "conditions": {
+        "player": [
+          {
+            "condition": "minecraft:location_check",
+            "predicate": {
+              "biome": "mirror_abyss:void_ruins"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "enter_void_ruins"
+    ]
+  ],
+  "rewards": {
+    "experience": 150
+  }
+}

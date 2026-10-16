@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "activated=false": {
+      "model": "mirror_abyss:block/watcher_altar"
+    },
+    "activated=true": {
+      "model": "mirror_abyss:block/watcher_altar_activated"
+    }
+  }
+}

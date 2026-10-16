@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "mirror_abyss:void_core"
+    }
+  ],
+  "result": {
+    "item": "mirror_abyss:void_essence",
+    "count": 4
+  }
+}

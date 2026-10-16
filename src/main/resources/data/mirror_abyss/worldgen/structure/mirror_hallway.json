@@ -1,0 +1,7 @@
+{
+  "type": "mirror_abyss:mirror_hallway",
+  "biomes": "#mirror_abyss:has_structure/mirror_hallway",
+  "step": "surface_structures",
+  "spawn_overrides": {},
+  "terrain_adaptation": "beard_thin"
+}

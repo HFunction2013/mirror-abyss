@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "isi",
+    "iee",
+    "iii"
+  ],
+  "key": {
+    "i": {
+      "item": "minecraft:iron_ingot"
+    },
+    "s": {
+      "item": "mirror_abyss:mirror_shard"
+    },
+    "e": {
+      "item": "mirror_abyss:void_essence"
+    }
+  },
+  "result": {
+    "item": "mirror_abyss:void_stabilizer"
+  }
+}

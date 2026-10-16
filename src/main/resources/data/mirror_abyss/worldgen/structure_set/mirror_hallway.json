@@ -1,0 +1,19 @@
+{
+  "structures": [
+    {
+      "structure": "mirror_abyss:mirror_hallway",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 18,
+    "separation": 7,
+    "salt": 20491931,
+    "locate_offset": [
+      0,
+      0,
+      0
+    ]
+  }
+}

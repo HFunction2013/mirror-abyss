@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "mirror_abyss:block/mirror_portal_frame_activated"
+  }
+}

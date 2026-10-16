@@ -1,0 +1,15 @@
+{
+  "type": "mirror_abyss:mirror_abyss",
+  "generator": {
+    "type": "mirror_abyss:mirror_abyss",
+    "settings": "mirror_abyss:mirror_abyss_noise_settings",
+    "biome_source": {
+      "type": "mirror_abyss:mirror_abyss_biome_source",
+      "biomes": [
+        "mirror_abyss:mirror_plains",
+        "mirror_abyss:cracked_badlands",
+        "mirror_abyss:void_ruins"
+      ]
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "structures": [
+    {
+      "structure": "mirror_abyss:void_sanctum",
+      "weight": 1
+    }
+  ],
+  "placement": {
+    "type": "minecraft:random_spread",
+    "spacing": 64,
+    "separation": 20,
+    "salt": 41074619,
+    "locate_offset": [
+      0,
+      0,
+      0
+    ]
+  }
+}

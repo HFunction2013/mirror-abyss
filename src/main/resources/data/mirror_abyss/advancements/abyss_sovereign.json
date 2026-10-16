@@ -1,0 +1,42 @@
+{
+  "display": {
+    "icon": {
+      "item": "mirror_abyss:void_core"
+    },
+    "title": {
+      "translate": "advancements.mirror_abyss.abyss_sovereign.title"
+    },
+    "description": {
+      "translate": "advancements.mirror_abyss.abyss_sovereign.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "mirror_abyss:watchers_legacy",
+  "criteria": {
+    "killed_mirror_eater": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": [
+          {
+            "condition": "minecraft:entity_properties",
+            "predicate": {
+              "type": "mirror_abyss:mirror_eater"
+            },
+            "entity": "this"
+          }
+        ]
+      }
+    }
+  },
+  "requirements": [
+    [
+      "killed_mirror_eater"
+    ]
+  ],
+  "rewards": {
+    "experience": 500
+  }
+}

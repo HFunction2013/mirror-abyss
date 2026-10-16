@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "particle": "mirror_abyss:block/reflective_lamp_off",
+    "north": "mirror_abyss:block/reflective_lamp_off",
+    "south": "mirror_abyss:block/reflective_lamp_off",
+    "east": "mirror_abyss:block/reflective_lamp_off",
+    "west": "mirror_abyss:block/reflective_lamp_off",
+    "up": "mirror_abyss:block/reflective_lamp_top_off",
+    "down": "mirror_abyss:block/reflective_lamp_off"
+  }
+}

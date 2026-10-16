@@ -1,0 +1,31 @@
+{
+  "display": {
+    "icon": {
+      "item": "mirror_abyss:final_mirror_item"
+    },
+    "title": {
+      "translate": "advancements.mirror_abyss.final_decision.title"
+    },
+    "description": {
+      "translate": "advancements.mirror_abyss.final_decision.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "parent": "mirror_abyss:abyss_sovereign",
+  "criteria": {
+    "final_decision": {
+      "trigger": "mirror_abyss:final_decision"
+    }
+  },
+  "requirements": [
+    [
+      "final_decision"
+    ]
+  ],
+  "rewards": {
+    "experience": 1000
+  }
+}

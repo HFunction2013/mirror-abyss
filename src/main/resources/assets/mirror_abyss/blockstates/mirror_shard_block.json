@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "reflecting=false": {
+      "model": "mirror_abyss:block/mirror_shard_block"
+    },
+    "reflecting=true": {
+      "model": "mirror_abyss:block/mirror_shard_block_reflecting"
+    }
+  }
+}

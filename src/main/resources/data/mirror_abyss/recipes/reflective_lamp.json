@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "sgs",
+    "c c",
+    "ccc"
+  ],
+  "key": {
+    "s": {
+      "item": "mirror_abyss:mirror_shard"
+    },
+    "g": {
+      "item": "minecraft:glowstone"
+    },
+    "c": {
+      "item": "minecraft:cobblestone"
+    }
+  },
+  "result": {
+    "item": "mirror_abyss:reflective_lamp"
+  }
+}

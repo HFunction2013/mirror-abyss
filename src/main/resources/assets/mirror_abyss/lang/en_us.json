@@ -1,0 +1,57 @@
+{
+  "itemGroup.mirror_abyss": "Echoes of the Abyss: The Final Mirror",
+
+  "block.mirror_abyss.cracked_stone": "Cracked Stone",
+  "block.mirror_abyss.mirror_shard_block": "Mirror Shard Block",
+  "block.mirror_abyss.void_stabilizer": "Void Stabilizer",
+  "block.mirror_abyss.watcher_altar": "Watcher Altar",
+  "block.mirror_abyss.final_mirror": "Final Mirror",
+  "block.mirror_abyss.mirror_portal_frame": "Mirror Portal Frame",
+  "block.mirror_abyss.void_floor": "Void Floor",
+  "block.mirror_abyss.watcher_brick": "Watcher Brick",
+  "block.mirror_abyss.reflective_lamp": "Reflective Lamp",
+  "block.mirror_abyss.abyss_ore": "Abyss Ore",
+
+  "item.mirror_abyss.mirror_shard": "Mirror Shard",
+  "item.mirror_abyss.void_essence": "Void Essence",
+  "item.mirror_abyss.void_eye": "Void Eye",
+  "item.mirror_abyss.watcher_relic": "Watcher Relic",
+  "item.mirror_abyss.cracked_silk": "Cracked Silk",
+  "item.mirror_abyss.void_core": "Void Core",
+  "item.mirror_abyss.final_mirror_item": "Final Mirror",
+
+  "entity.mirror_abyss.mirage_walker": "Mirage Walker",
+  "entity.mirror_abyss.void_devourer": "Void Devourer",
+  "entity.mirror_abyss.crack_spider": "Crack Spider",
+  "entity.mirror_abyss.mirror_eater": "Mirror Eater",
+  "entity.mirror_abyss.void_bolt": "Void Bolt",
+
+  "effect.mirror_abyss.void_erosion": "Void Erosion",
+
+  "container.mirror_abyss.final_mirror": "Final Mirror",
+  "gui.mirror_abyss.seal_void": "Seal the Void",
+  "gui.mirror_abyss.fuse_reality": "Fuse Reality",
+
+  "advancements.mirror_abyss.mirror_world.title": "Beyond the Broken Gate",
+  "advancements.mirror_abyss.mirror_world.description": "Enter the Mirror Abyss",
+  "advancements.mirror_abyss.broken_reflection.title": "Broken Reflection",
+  "advancements.mirror_abyss.broken_reflection.description": "Defeat a Mirage Walker",
+  "advancements.mirror_abyss.eye_of_void.title": "Gaze Into the Void",
+  "advancements.mirror_abyss.eye_of_void.description": "Obtain a Void Eye",
+  "advancements.mirror_abyss.watchers_legacy.title": "The Watchers' Legacy",
+  "advancements.mirror_abyss.watchers_legacy.description": "Explore the Watcher Ruins",
+  "advancements.mirror_abyss.light_refraction.title": "Refraction of Light",
+  "advancements.mirror_abyss.light_refraction.description": "Solve a light puzzle with mirror shard blocks",
+  "advancements.mirror_abyss.abyss_sovereign.title": "Sovereign of the Abyss",
+  "advancements.mirror_abyss.abyss_sovereign.description": "Defeat the Mirror Eater",
+  "advancements.mirror_abyss.final_decision.title": "The Final Decision",
+  "advancements.mirror_abyss.final_decision.description": "Use the Final Mirror and complete an ending",
+
+  "boss.mirror_abyss.phase1": "Mirror Eater: \"Mirrors, heed my call!\"",
+  "boss.mirror_abyss.phase2": "Mirror Eater: \"Shatter, world of mirrors!\"",
+  "boss.mirror_abyss.phase3": "Mirror Eater: \"The Void... will devour all!\"",
+  "boss.mirror_abyss.teleport": "The Mirror Eater warps space!",
+  "boss.mirror_abyss.charge": "The Mirror Eater is charging Void Annihilation!",
+  "boss.mirror_abyss.interrupted": "A Void Stabilizer interrupted the charge!",
+  "boss.mirror_abyss.annihilation": "Void Annihilation!"
+}

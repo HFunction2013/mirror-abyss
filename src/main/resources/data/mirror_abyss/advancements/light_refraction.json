@@ -1,0 +1,31 @@
+{
+  "display": {
+    "icon": {
+      "item": "mirror_abyss:mirror_shard_block"
+    },
+    "title": {
+      "translate": "advancements.mirror_abyss.light_refraction.title"
+    },
+    "description": {
+      "translate": "advancements.mirror_abyss.light_refraction.description"
+    },
+    "frame": "goal",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "parent": "mirror_abyss:mirror_world",
+  "criteria": {
+    "light_refraction": {
+      "trigger": "mirror_abyss:light_refraction"
+    }
+  },
+  "requirements": [
+    [
+      "light_refraction"
+    ]
+  ],
+  "rewards": {
+    "experience": 200
+  }
+}
