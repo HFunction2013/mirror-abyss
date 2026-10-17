@@ -51,8 +51,11 @@ public class FinalMirrorScreen extends AbstractContainerScreen<FinalMirrorMenu> 
     }
 
     private void onEndingChosen(int ending) {
-        // TODO(packet): channel.sendToServer(new FinalMirrorChoicePacket(ending));
-        MirrorAbyss.LOGGER.info("[mirror_abyss] Player chose ending {}", ending);
+        // Send the choice to the server; the server persists it on the
+        // FinalMirrorBE, applies the ending effects and fires the
+        // final_decision advancement.
+        com.example.mirror_abyss.networking.ModNetwork.CHANNEL.sendToServer(
+                new com.example.mirror_abyss.networking.FinalMirrorChoicePacket(ending));
         this.onClose();
     }
 

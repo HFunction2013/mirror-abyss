@@ -7,6 +7,9 @@ import com.example.mirror_abyss.entity.Monster.VoidDevourer;
 import com.example.mirror_abyss.entity.boss.MirrorEater;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.entity.SpawnPlacements;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
 import net.minecraftforge.registries.DeferredRegister;
@@ -82,15 +85,21 @@ public final class ModEntities {
      * (spawn lists are defined in the biome JSONs).
      */
     public static void registerSpawnPlacements(SpawnPlacementRegisterEvent event) {
-        // Monster.spawnRestriction for ground mobs (placeholder values).
-        // event.register(MIRAGE_WALKER.get(), SpawnPlacements.Type.ON_GROUND,
-        //         Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Mob::checkMobSpawnRules,
-        //         SpawnPlacementRegisterEvent.Operation.REPLACE);
+        event.register(MIRAGE_WALKER.get(), SpawnPlacements.Type.ON_GROUND,
+                Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMobSpawnRules,
+                SpawnPlacementRegisterEvent.Operation.REPLACE);
+        event.register(VOID_DEVOURER.get(), SpawnPlacements.Type.ON_GROUND,
+                Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMobSpawnRules,
+                SpawnPlacementRegisterEvent.Operation.REPLACE);
+        event.register(CRACK_SPIDER.get(), SpawnPlacements.Type.ON_GROUND,
+                Heightmap.Types.MOTION_BLOCKING_NO_LEAVES, Monster::checkMobSpawnRules,
+                SpawnPlacementRegisterEvent.Operation.REPLACE);
+        // The boss is summoned from the void_sanctum structure entity, not spawned naturally.
     }
 
-    /** Static fallback used from FMLCommonSetupEvent (kept for compatibility). */
+    /** Legacy no-op kept for binary compatibility; prefer the event-driven path. */
     public static void registerSpawnPlacementsStatic() {
-        // No-op in skeleton: see registerSpawnPlacements for the event-driven version.
+        // No-op: spawn placements are registered via SpawnPlacementRegisterEvent.
     }
 
     private ModEntities() {

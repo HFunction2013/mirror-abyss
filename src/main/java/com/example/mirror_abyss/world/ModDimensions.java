@@ -3,7 +3,6 @@ package com.example.mirror_abyss.world;
 import com.example.mirror_abyss.MirrorAbyss;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -85,13 +84,10 @@ public final class ModDimensions {
     }
 
     /**
-     * Registers the custom dimension special effects (sky color, fog, cloud
-     * renderer). Skeleton: hook into RegisterEvent in the mod constructor.
+     * Dimension special effects (custom sky / fog) are registered client-side
+     * by client.MirrorAbyssEffects#register() under "mirror_abyss:mirror_abyss"
+     * (see FMLClientSetupEvent in ClientSetup).
      */
-    public static void registerDimensionEffects(net.minecraftforge.registries.RegisterEvent event) {
-        // event.register(Registries.DIMENSION_EFFECTS, new ResourceLocation(MOD_ID, "mirror_abyss"),
-        //         () -> new MirrorAbyssEffects());
-    }
 
     // ======================= Teleportation =======================
 

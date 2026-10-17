@@ -7,9 +7,10 @@ import com.example.mirror_abyss.effect.ModEffects;
 import com.example.mirror_abyss.entity.ModEntities;
 import com.example.mirror_abyss.gui.ModMenuTypes;
 import com.example.mirror_abyss.item.ModItems;
+import com.example.mirror_abyss.networking.ModNetwork;
+import com.example.mirror_abyss.sound.ModSounds;
 import com.example.mirror_abyss.world.ModBiomes;
 import com.example.mirror_abyss.world.ModDimensions;
-import com.example.mirror_abyss.world.ModStructures;
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -48,14 +49,16 @@ public class MirrorAbyss {
         ModMenuTypes.MENU_TYPES.register(modBus);
         ModEffects.MOB_EFFECTS.register(modBus);
         ModCreativeTabs.CREATIVE_TABS.register(modBus);
+        ModSounds.SOUND_EVENTS.register(modBus);
 
-        // ---- Worldgen batches (dimension type, biomes, structures) ----
+        // ---- Worldgen batches (dimension type, biomes; structures are fully data-driven jigsaw) ----
         ModDimensions.DIMENSION_TYPES.register(modBus);
         ModBiomes.BIOMES.register(modBus);
-        ModStructures.STRUCTURE_TYPES.register(modBus);
 
         // ---- Lifecycle listeners ----
         modBus.addListener(this::commonSetup);
+        modBus.addListener(ModEntities::registerAttributes);
+        modBus.addListener(ModEntities::registerSpawnPlacements);
 
         // ---- Game event listeners ----
         forgeBus.register(this);
@@ -63,12 +66,12 @@ public class MirrorAbyss {
         // Force static init of custom codecs / advancement triggers.
         ModDimensions.init();
         ModAdvancements.init();
+        ModNetwork.register(); // SimpleChannel (ending choice packet)
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork(() -> {
             ModDimensions.registerTeleporter();
-            ModEntities.registerSpawnPlacementsStatic();
             LOGGER.info("[mirror_abyss] Common setup finished.");
         });
     }

@@ -1,8 +1,10 @@
 package com.example.mirror_abyss.block;
 
+import com.example.mirror_abyss.sound.ModSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -88,6 +90,10 @@ public class MirrorPortalFrameBlock extends Block {
                     anyActivated = true;
                 }
             }
+        }
+        if (anyActivated) {
+            level.playSound(null, clicked, ModSounds.PORTAL_ACTIVATE.get(),
+                    SoundSource.BLOCKS, 1.0F, 1.0F);
         }
         return anyActivated;
     }

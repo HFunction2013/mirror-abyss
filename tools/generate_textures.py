@@ -16,6 +16,7 @@ RNG = np.random.default_rng(20241016)
 BLOCK_DIR = "src/main/resources/assets/mirror_abyss/textures/block"
 ITEM_DIR = "src/main/resources/assets/mirror_abyss/textures/item"
 GUI_DIR = "src/main/resources/assets/mirror_abyss/textures/gui"
+ENTITY_DIR = "src/main/resources/assets/mirror_abyss/textures/entity"
 
 
 
@@ -395,6 +396,73 @@ def item_void_core():
     return a
 
 
+
+
+# ============================================================
+# ENTITY TEXTURES (16x16 placeholder skins)
+# ============================================================
+
+def entity_mirage_walker():
+    """Translucent mirror-fragment humanoid: silver body, purple cracks."""
+    a = new_img((201, 214, 229, 220))          # silver body, semi-transparent
+    a = crack_lines(a, (143, 123, 255, 255), 3)
+    a = speckle(a, [(235, 240, 250, 255), (110, 120, 150, 255)], 20)
+    # face: dark hollow eyes
+    a[4, 5] = (30, 30, 50, 255)
+    a[4, 10] = (30, 30, 50, 255)
+    return a
+
+
+def entity_void_devourer():
+    """Black orb with a purple vortex."""
+    a = new_img((16, 14, 26, 255))
+    a = fill_circle(a, (8, 8), 7, (20, 18, 34, 255))
+    a = fill_circle(a, (8, 8), 4, (90, 43, 160, 255))
+    a = fill_circle(a, (8, 8), 2, (200, 160, 255, 255))
+    # vortex arms
+    for i in range(6):
+        x = (8 + int(6 * np.cos(i * 1.05))) % 16
+        y = (8 + int(6 * np.sin(i * 1.05))) % 16
+        a[y, x] = (150, 100, 220, 255)
+    return a
+
+
+def entity_crack_spider():
+    """Rock spider with purple fissure lines."""
+    a = new_img((70, 74, 84, 255))
+    a = speckle(a, [(50, 54, 62), (90, 95, 105)], 60)
+    a = crack_lines(a, (122, 60, 255, 255), 4)
+    # eyes
+    a[4, 4] = (255, 255, 255, 255)
+    a[4, 11] = (255, 255, 255, 255)
+    a[4, 4] = (255, 120, 120, 255)
+    a[4, 11] = (255, 120, 120, 255)
+    return a
+
+
+def entity_mirror_eater():
+    """Boss: dark body, bright mirror chest, void pupil."""
+    a = new_img((24, 22, 34, 255))
+    a = speckle(a, [(40, 38, 52), (60, 56, 74)], 50)
+    a = crack_lines(a, (179, 136, 255, 255), 3)
+    # mirror chest
+    a[8:13, 6:10] = (179, 136, 255, 255)
+    a[9:12, 7:9] = (10, 8, 18, 255)            # void pupil
+    a[10, 7] = (122, 252, 255, 255)             # iris glint
+    # head eyes
+    a[2, 4] = (200, 60, 60, 255)
+    a[2, 11] = (200, 60, 60, 255)
+    return a
+
+
+def entity_void_bolt():
+    """Small purple projectile orb."""
+    a = np.zeros((16, 16, 4), dtype=np.uint8)
+    a = fill_circle(a, (8, 8), 6, (90, 43, 160, 255))
+    a = fill_circle(a, (8, 8), 3, (220, 190, 255, 255))
+    a = fill_circle(a, (8, 8), 1, (255, 255, 255, 255))
+    return a
+
 # ============================================================
 # GUI
 # ============================================================
@@ -459,6 +527,17 @@ def main():
     for name, fn in items.items():
         save(fn(), os.path.join(ITEM_DIR, name + ".png"))
     save(gui_final_mirror(), os.path.join(GUI_DIR, "final_mirror.png"))
+
+    entities = {
+        "mirage_walker": entity_mirage_walker,
+        "void_devourer": entity_void_devourer,
+        "crack_spider": entity_crack_spider,
+        "mirror_eater": entity_mirror_eater,
+        "void_bolt": entity_void_bolt,
+    }
+    for name, fn in entities.items():
+        save(fn(), os.path.join(ENTITY_DIR, name + ".png"))
+    print("Generated", len(entities), "entity textures.")
 
     print("Generated", len(blocks), "block textures,", len(items), "item textures, 1 gui texture.")
 

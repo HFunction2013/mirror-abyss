@@ -3,6 +3,7 @@ package com.example.mirror_abyss.entity.Monster;
 import com.example.mirror_abyss.effect.ModEffects;
 import com.example.mirror_abyss.entity.ModEntities;
 import com.example.mirror_abyss.entity.VoidBolt;
+import com.example.mirror_abyss.sound.ModSounds;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
@@ -60,6 +61,7 @@ public class VoidDevourer extends Monster implements RangedAttackMob {
         VoidBolt bolt = new VoidBolt(this.level(), this, spawn.x, spawn.y, spawn.z);
         Vec3 dir = target.getEyePosition().subtract(spawn).normalize().scale(1.6D);
         bolt.setDeltaMovement(dir);
+        this.playSound(ModSounds.VOID_BOLT_LAUNCH.get(), 1.0F, 1.1F);
         this.level().addFreshEntity(bolt);
     }
 
