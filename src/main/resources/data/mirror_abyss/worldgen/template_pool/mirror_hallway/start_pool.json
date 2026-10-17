@@ -1,0 +1,15 @@
+{
+  "name": "mirror_abyss:mirror_hallway/start_pool",
+  "fallback": "minecraft:empty",
+  "elements": [
+    {
+      "weight": 1,
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "mirror_abyss:mirror_hallway",
+        "projection": "rigid",
+        "processors": "minecraft:empty"
+      }
+    }
+  ]
+}

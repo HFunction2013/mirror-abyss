@@ -49,5 +49,12 @@
   "boss.mirror_abyss.annihilation": "Void Annihilation!",
   "boss.mirror_abyss.death": "The Mirror Eater is shattered - the abyss trembles!",
   "end.mirror_abyss.sealed": "The Final Mirror: the Void is sealed, the Mirror Abyss falls silent.",
-  "end.mirror_abyss.fused": "The Final Mirror: reality fuses with the Mirror Abyss - the Void spreads..."
+  "end.mirror_abyss.fused": "The Final Mirror: reality fuses with the Mirror Abyss - the Void spreads...",
+  "subtitles.mirror_abyss.mirror_ambient": "Mirror Abyss: echoing whispers",
+  "subtitles.mirror_abyss.portal_activate": "Mirror Portal activates",
+  "subtitles.mirror_abyss.boss_roar": "Mirror Eater roars",
+  "subtitles.mirror_abyss.boss_charge": "Mirror Eater charges void",
+  "subtitles.mirror_abyss.void_bolt_launch": "Void Devourer fires void bolt",
+  "subtitles.mirror_abyss.ending_seal": "Final Mirror seals the Void",
+  "subtitles.mirror_abyss.ending_fuse": "Final Mirror fuses reality"
 }

@@ -3,6 +3,7 @@ package com.example.mirror_abyss.entity.boss;
 import com.example.mirror_abyss.block.VoidStabilizerBlock;
 import com.example.mirror_abyss.entity.ModEntities;
 import com.example.mirror_abyss.entity.Monster.MirageWalker;
+import com.example.mirror_abyss.sound.ModSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -135,9 +136,18 @@ public class MirrorEater extends Monster {
 
     private void onPhaseEnter(int phase) {
         switch (phase) {
-            case PHASE_ONE -> broadcast(Component.translatable("boss.mirror_abyss.phase1"));
-            case PHASE_TWO -> broadcast(Component.translatable("boss.mirror_abyss.phase2"));
-            case PHASE_THREE -> broadcast(Component.translatable("boss.mirror_abyss.phase3"));
+            case PHASE_ONE -> {
+                broadcast(Component.translatable("boss.mirror_abyss.phase1"));
+                this.playSound(ModSounds.BOSS_ROAR.get(), 3.0F, 1.0F);
+            }
+            case PHASE_TWO -> {
+                broadcast(Component.translatable("boss.mirror_abyss.phase2"));
+                this.playSound(ModSounds.BOSS_ROAR.get(), 3.0F, 1.2F);
+            }
+            case PHASE_THREE -> {
+                broadcast(Component.translatable("boss.mirror_abyss.phase3"));
+                this.playSound(ModSounds.BOSS_ROAR.get(), 3.0F, 0.8F);
+            }
         }
     }
 
@@ -180,6 +190,7 @@ public class MirrorEater extends Monster {
         this.entityData.set(CHARGING, true);
         this.chargeProgress = 0;
         broadcast(Component.translatable("boss.mirror_abyss.charge"));
+        this.playSound(ModSounds.BOSS_CHARGE.get(), 3.0F, 0.7F);
     }
 
     @Override

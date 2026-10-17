@@ -15,12 +15,14 @@ import com.example.mirror_abyss.entity.ModEntities;
 import com.example.mirror_abyss.gui.FinalMirrorScreen;
 import com.example.mirror_abyss.gui.ModMenuTypes;
 import net.minecraft.client.model.geom.ModelLayerLocation;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.client.event.RegisterMenuScreensEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.RegisterEvent;
 
 /**
  * ClientSetup - all client-side registrations.
@@ -63,6 +65,18 @@ public final class ClientSetup {
     @SubscribeEvent
     public static void registerScreens(RegisterMenuScreensEvent event) {
         event.register(ModMenuTypes.FINAL_MIRROR_MENU.get(), FinalMirrorScreen::new);
+    }
+
+    /** Register the Mirror Abyss dimension special effects (sky/fog renderer).
+     *  This class is @EventBusSubscriber(Dist.CLIENT), so this only ever runs
+     *  on the client - the server never loads MirrorAbyssEffects. */
+    @SubscribeEvent
+    public static void registerDimensionEffects(RegisterEvent event) {
+        if (event.getRegistryKey().equals(Registries.DIMENSION_EFFECTS)) {
+            event.register(Registries.DIMENSION_EFFECTS,
+                    new ResourceLocation(MirrorAbyss.MOD_ID, "mirror_abyss"),
+                    MirrorAbyssEffects::new);
+        }
     }
 
     private ClientSetup() {

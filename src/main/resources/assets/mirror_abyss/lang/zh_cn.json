@@ -49,5 +49,12 @@
   "boss.mirror_abyss.annihilation": "『虚空湮灭』降临！",
   "boss.mirror_abyss.death": "噬镜者被击碎了，镜渊为之震颤！",
   "end.mirror_abyss.sealed": "终焉之镜：虚空已被封印，镜渊归于沉寂。",
-  "end.mirror_abyss.fused": "终焉之镜：现实与镜渊融合，虚空气息正在蔓延……"
+  "end.mirror_abyss.fused": "终焉之镜：现实与镜渊融合，虚空气息正在蔓延……",
+  "subtitles.mirror_abyss.mirror_ambient": "镜渊：回声低语",
+  "subtitles.mirror_abyss.portal_activate": "镜面传送门：开启",
+  "subtitles.mirror_abyss.boss_roar": "噬镜者：咆哮",
+  "subtitles.mirror_abyss.boss_charge": "噬镜者：虚空充能",
+  "subtitles.mirror_abyss.void_bolt_launch": "虚空吞噬者：发射虚空弹",
+  "subtitles.mirror_abyss.ending_seal": "终焉之镜：虚空封印",
+  "subtitles.mirror_abyss.ending_fuse": "终焉之镜：现实融合"
 }

@@ -2,11 +2,13 @@ package com.example.mirror_abyss.world;
 
 import com.example.mirror_abyss.advancement.ModAdvancements;
 import com.example.mirror_abyss.block.ModBlocks;
+import com.example.mirror_abyss.sound.ModSounds;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -35,11 +37,15 @@ public final class EndingEffects {
 
         if (ending == SEAL) {
             broadcast(level, "end.mirror_abyss.sealed", ChatFormatting.AQUA);
+            level.playSound(null, player.blockPosition(), ModSounds.ENDING_SEAL.get(),
+                    SoundSource.AMBIENT, 1.0F, 1.0F);
             // Skeleton reward: saturation + regeneration so the player survives the void.
             player.addEffect(new MobEffectInstance(MobEffects.SATURATION, 400, 1));
             player.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 200, 1));
         } else if (ending == FUSE) {
             broadcast(level, "end.mirror_abyss.fused", ChatFormatting.DARK_PURPLE);
+            level.playSound(null, player.blockPosition(), ModSounds.ENDING_FUSE.get(),
+                    SoundSource.AMBIENT, 1.0F, 1.0F);
             spawnVoidPatches(level, player.blockPosition());
         } else {
             return; // invalid choice - do nothing
