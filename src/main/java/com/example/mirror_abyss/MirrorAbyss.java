@@ -7,6 +7,7 @@ import com.example.mirror_abyss.effect.ModEffects;
 import com.example.mirror_abyss.entity.ModEntities;
 import com.example.mirror_abyss.gui.ModMenuTypes;
 import com.example.mirror_abyss.item.ModItems;
+import com.example.mirror_abyss.networking.ModNetwork;
 import com.example.mirror_abyss.world.ModBiomes;
 import com.example.mirror_abyss.world.ModDimensions;
 import com.example.mirror_abyss.world.ModStructures;
@@ -63,6 +64,7 @@ public class MirrorAbyss {
         // Force static init of custom codecs / advancement triggers.
         ModDimensions.init();
         ModAdvancements.init();
+        ModNetwork.register(); // SimpleChannel (ending choice packet)
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {

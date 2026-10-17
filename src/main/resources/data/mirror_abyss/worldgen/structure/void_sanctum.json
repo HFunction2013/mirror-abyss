@@ -1,5 +1,5 @@
 {
-  "type": "mirror_abyss:void_sanctum",
+  "type": "mirror_abyss:mirror_ruins",
   "biomes": "#mirror_abyss:has_structure/void_sanctum",
   "step": "surface_structures",
   "spawn_overrides": {
@@ -8,5 +8,13 @@
       "spawns": []
     }
   },
-  "terrain_adaptation": "none"
+  "terrain_adaptation": "none",
+  "palette": [
+    "mirror_abyss:watcher_brick",
+    "mirror_abyss:void_floor"
+  ],
+  "size_x": 16,
+  "size_y": 3,
+  "size_z": 16,
+  "spawn_boss": true
 }

@@ -1,6 +1,5 @@
 {
   "itemGroup.mirror_abyss": "深渊回响：终焉之镜",
-
   "block.mirror_abyss.cracked_stone": "裂隙岩",
   "block.mirror_abyss.mirror_shard_block": "镜面碎片块",
   "block.mirror_abyss.void_stabilizer": "虚空稳定器",
@@ -11,7 +10,6 @@
   "block.mirror_abyss.watcher_brick": "守望者砖",
   "block.mirror_abyss.reflective_lamp": "反射灯",
   "block.mirror_abyss.abyss_ore": "深渊镜矿",
-
   "item.mirror_abyss.mirror_shard": "镜面碎片",
   "item.mirror_abyss.void_essence": "虚空精华",
   "item.mirror_abyss.void_eye": "虚空之眼",
@@ -19,19 +17,15 @@
   "item.mirror_abyss.cracked_silk": "裂隙丝线",
   "item.mirror_abyss.void_core": "虚空核心",
   "item.mirror_abyss.final_mirror_item": "终焉之镜",
-
   "entity.mirror_abyss.mirage_walker": "镜影行者",
   "entity.mirror_abyss.void_devourer": "虚空吞噬者",
   "entity.mirror_abyss.crack_spider": "裂隙蜘蛛",
   "entity.mirror_abyss.mirror_eater": "噬镜者",
   "entity.mirror_abyss.void_bolt": "虚空弹",
-
   "effect.mirror_abyss.void_erosion": "虚空侵蚀",
-
   "container.mirror_abyss.final_mirror": "终焉之镜",
   "gui.mirror_abyss.seal_void": "封印虚空",
   "gui.mirror_abyss.fuse_reality": "融合现实",
-
   "advancements.mirror_abyss.mirror_world.title": "破碎之门的彼端",
   "advancements.mirror_abyss.mirror_world.description": "进入镜渊",
   "advancements.mirror_abyss.broken_reflection.title": "破碎的倒影",
@@ -46,12 +40,14 @@
   "advancements.mirror_abyss.abyss_sovereign.description": "击败噬镜者",
   "advancements.mirror_abyss.final_decision.title": "终焉抉择",
   "advancements.mirror_abyss.final_decision.description": "使用终焉之镜并完成结局",
-
   "boss.mirror_abyss.phase1": "噬镜者：'镜影，听我号令！'",
   "boss.mirror_abyss.phase2": "噬镜者：'破碎吧，镜之世界！'",
   "boss.mirror_abyss.phase3": "噬镜者：'虚空……终将吞没一切！'",
   "boss.mirror_abyss.teleport": "噬镜者扭曲了空间！",
   "boss.mirror_abyss.charge": "噬镜者正在蓄力『虚空湮灭』！",
   "boss.mirror_abyss.interrupted": "虚空稳定器打断了蓄力！",
-  "boss.mirror_abyss.annihilation": "『虚空湮灭』降临！"
+  "boss.mirror_abyss.annihilation": "『虚空湮灭』降临！",
+  "boss.mirror_abyss.death": "噬镜者被击碎了，镜渊为之震颤！",
+  "end.mirror_abyss.sealed": "终焉之镜：虚空已被封印，镜渊归于沉寂。",
+  "end.mirror_abyss.fused": "终焉之镜：现实与镜渊融合，虚空气息正在蔓延……"
 }

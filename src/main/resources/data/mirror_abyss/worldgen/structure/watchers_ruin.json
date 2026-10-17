@@ -1,7 +1,15 @@
 {
-  "type": "mirror_abyss:watchers_ruin",
+  "type": "mirror_abyss:mirror_ruins",
   "biomes": "#mirror_abyss:has_structure/watchers_ruin",
   "step": "surface_structures",
   "spawn_overrides": {},
-  "terrain_adaptation": "beard_thin"
+  "terrain_adaptation": "beard_thin",
+  "palette": [
+    "mirror_abyss:watcher_brick",
+    "mirror_abyss:cracked_stone"
+  ],
+  "size_x": 8,
+  "size_y": 4,
+  "size_z": 8,
+  "spawn_boss": false
 }

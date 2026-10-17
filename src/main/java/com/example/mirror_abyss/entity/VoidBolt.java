@@ -48,8 +48,9 @@ public class VoidBolt extends AbstractHurtingProjectile {
         super.onHitEntity(result);
         if (!this.level().isClientSide) {
             Entity target = result.getEntity();
-            if (target instanceof LivingEntity living && living != this.getOwner()) {
-                living.hurt(this.damageSources().mobProjectile(this, (LivingEntity) this.getOwner()),
+            LivingEntity owner = this.getOwner() instanceof LivingEntity living ? living : null;
+            if (target instanceof LivingEntity living && living != owner) {
+                living.hurt(this.damageSources().mobProjectile(this, owner),
                         this.entityData.get(DAMAGE));
                 living.addEffect(new MobEffectInstance(ModEffects.VOID_EROSION.get(), 100, 0));
             }

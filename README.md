@@ -4,11 +4,13 @@ A Minecraft **Forge 1.20.1** mod (`mirror_abyss`) — mine mirror shards, enter 
 **Mirror Abyss** dimension, survive its monsters, solve light puzzles, defeat the
 **Mirror Eater** boss, and choose between sealing the void or fusing reality.
 
-> Skeleton status: this repository is a complete **code / resource / texture
-> skeleton** — every block, item, entity, dimension, advancement and recipe is
-> registered and data-driven, with placeholder procedural 16x16 textures.
-> Gameplay tuning, entity renderers/models, boss arena layout and structure
-> templates still need final implementation (marked `TODO` in code).
+> Status: a complete **code / resource / texture skeleton** — every block, item,
+> entity, dimension, advancement and recipe is registered and data-driven;
+> client entity models/renderers, the ending networking pipeline and boss arena
+> spawning are implemented. Placeholder procedural 16x16 textures are included.
+> Remaining work (tuning, real 3D models, Jigsaw templates, sky renderer) is
+> listed under [Known Gaps](#known-gaps-todo). Chinese dev doc:
+> [docs/开发文档.md](docs/开发文档.md).
 
 ---
 
@@ -33,21 +35,24 @@ A Minecraft **Forge 1.20.1** mod (`mirror_abyss`) — mine mirror shards, enter 
   final_mirror (ending GUI), mirror_portal_frame (4x5 portal), void_floor
   (void damage), watcher_brick, reflective_lamp (light beam, light 12),
   abyss_ore (drops mirror_shard, deep overworld via Forge biome modifier).
-- **4 mobs** — MirageWalker (neutral while you hold a shard and stand still),
-  VoidDevourer (void_bolt + void_erosion effect), CrackSpider (climbs, spawns
-  cracks), MirrorEater (3-phase boss, projectile reflect, teleport, interruptible
-  "void annihilation" charge).
+- **4 mobs + renderers/models** — MirageWalker (translucent, neutral while you
+  hold a shard and stand still), VoidDevourer (void_bolt + void_erosion),
+  CrackSpider (climbs, spawns cracks), MirrorEater (3-phase boss with boss bar,
+  projectile reflect, teleport, interruptible "void annihilation" charge).
+- **Dual-ending finale** — `SimpleChannel` packet (`FinalMirrorChoicePacket`),
+  choice persisted in `FinalMirrorBE`, world effects (seal buffs / fuse void
+  spread) and the `final_decision` advancement trigger.
 - **7 advancements** — data-driven JSONs + 2 custom criteria triggers
   (`light_refraction`, `final_decision`).
-- **3 structures** — watchers_ruin / mirror_hallway / void_sanctum
-  (procedural placeholder pieces, swap to Jigsaw + .nbt for final builds).
+- **3 structures** — watchers_ruin / mirror_hallway / void_sanctum share one
+  parameterized structure type; the sanctum spawns the boss at generation.
 - **Bilingual** `zh_cn.json` + `en_us.json`, full loot tables + recipes.
 
 ## Project Layout
 
 ```
 src/main/java/com/example/mirror_abyss/
-  MirrorAbyss.java            # @Mod entry, all DeferredRegisters
+  MirrorAbyss.java            # @Mod entry, all DeferredRegisters + networking
   ModCreativeTabs.java
   block/   ModBlocks.java + 7 functional block classes
   item/    ModItems.java
@@ -58,42 +63,44 @@ src/main/java/com/example/mirror_abyss/
   gui/     ModMenuTypes.java, FinalMirrorMenu.java, FinalMirrorScreen.java
   effect/  ModEffects.java, VoidErosionEffect.java
   advancement/ ModAdvancements.java
+  networking/ ModNetwork.java, FinalMirrorChoicePacket.java
+  client/  ClientSetup.java, model/ (5), renderer/ (5)
   world/   ModDimensions.java, ModBiomes.java, ModStructures.java,
            MirrorAbyssBiomeSource.java, MirrorAbyssChunkGenerator.java,
-           MirrorRuinsStructure.java
+           MirrorRuinsStructure.java, EndingEffects.java
 
 src/main/resources/
   META-INF/mods.toml, pack.mcmeta
   assets/mirror_abyss/
-    blockstates/ models/block/ models/item/ lang/ textures/{block,item,gui}/
+    blockstates/ models/block/ models/item/ lang/
+    textures/{block,item,entity,gui}/
   data/mirror_abyss/
     advancements/ loot_tables/{blocks,entities}/ recipes/
     dimension/ dimension_type/ forge/biome_modifier/ tags/
     worldgen/{biome,noise_settings,configured_feature,placed_feature,structure,structure_set}/
 
-tools/generate_textures.py    # regenerates all placeholder 16x16 PNGs
+tools/generate_textures.py    # regenerates all placeholder PNGs
+docs/开发文档.md                # Chinese developer documentation
 ```
 
 ## Development
 
 ```bash
-# 1. set up (downloads Forge toolchain)
-./gradlew setup
+# 1. build the jar (Gradle wrapper 8.1.1, needs JDK 17)
+./gradlew build
+# -> build/libs/mirror_abyss-1.0.0.jar
 
 # 2. run a dev client
 ./gradlew runClient
 
-# 3. regenerate all datagen output (JSONs are hand-written for this skeleton)
-./gradlew runData
-
-# 4. build the jar
-./gradlew build
-# -> build/libs/mirror_abyss-1.0.0.jar
+# 3. run the game server
+./gradlew runServer
 ```
 
 ## Texture Pipeline
 
-Placeholder 16x16 textures are generated procedurally (seeded, reproducible):
+Placeholder 16x16 textures (24 block / 7 item / 5 entity / 1 gui) are generated
+procedurally (seeded, reproducible):
 
 ```bash
 python3 tools/generate_textures.py
@@ -102,20 +109,19 @@ python3 tools/generate_textures.py
 Upgrade to 32x32 by editing the `new_img(..., size=...)` defaults — all models
 are resolution-independent.
 
-## Known Skeleton Gaps (TODO)
+## Known Gaps (TODO)
 
-- Entity renderers / models (client) — `EntityRenderersEvent` hooks are stubbed
-  in `ModEntities#registerSpawnPlacements`; add `ModEntities#registerRenderers`
-  + Geo/Java models.
-- `MirrorRuinsStructure` uses a simple block-fill piece; replace with Jigsaw
-  + Structure-Block-exported `.nbt` templates for the three structures.
+- Entity models are placeholder cube geometry; replace with GeoModel
+  (GeckoLib) or Blockbench-exported models + sound events.
+- `MirrorRuinsStructure` fills a plain box; swap for Jigsaw + Structure-Block
+  exported `.nbt` templates for the three structures.
 - Boss arena anchor (`teleportToVoidSanctum`) uses a fixed coordinate; wire it
   to the generated `void_sanctum` structure bounding box.
-- FinalMirror ending packet (`FinalMirrorScreen#onEndingChosen`) — add a
-  `SimpleChannel` payload that writes the choice to `FinalMirrorBE` and fires
-  the `final_decision` advancement.
-- Dimension special effects (`ModDimensions#registerDimensionEffects`) — sky
-  renderer / floating mirror-shard particles.
+- Dimension special effects (`ModDimensions#registerDimensionEffects`) — custom
+  sky renderer / floating mirror-shard particles.
+- `MirrorAbyss` should hook `ModEntities#registerAttributes` onto
+  `EntityAttributeCreationEvent` and `registerSpawnPlacements` onto
+  `SpawnPlacementRegisterEvent` (stubbed methods exist).
 
 ## License
 

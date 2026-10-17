@@ -1,7 +1,15 @@
 {
-  "type": "mirror_abyss:mirror_hallway",
+  "type": "mirror_abyss:mirror_ruins",
   "biomes": "#mirror_abyss:has_structure/mirror_hallway",
   "step": "surface_structures",
   "spawn_overrides": {},
-  "terrain_adaptation": "beard_thin"
+  "terrain_adaptation": "beard_thin",
+  "palette": [
+    "mirror_abyss:mirror_shard_block",
+    "mirror_abyss:cracked_stone"
+  ],
+  "size_x": 12,
+  "size_y": 4,
+  "size_z": 4,
+  "spawn_boss": false
 }
