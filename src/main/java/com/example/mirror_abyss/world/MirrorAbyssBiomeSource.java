@@ -1,15 +1,11 @@
 package com.example.mirror_abyss.world;
 
-import com.example.mirror_abyss.MirrorAbyss;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
-import net.minecraft.core.Registry;
 import net.minecraft.core.RegistryCodecs;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeSource;
 import net.minecraft.world.level.biome.Climate;
@@ -59,11 +55,5 @@ public class MirrorAbyssBiomeSource extends BiomeSource {
         int hash = (x * 7349 + z * 9403) & 0x7FFFFFFF;
         List<Holder<Biome>> list = biomes.stream().toList();
         return list.get(hash % list.size());
-    }
-
-    /** Registers the codec under "mirror_abyss:mirror_abyss_biome_source". */
-    public static void registerCodec() {
-        Registry.register(BuiltInRegistries.BIOME_SOURCE,
-                new ResourceLocation(MirrorAbyss.MOD_ID, "mirror_abyss_biome_source"), CODEC);
     }
 }

@@ -1,12 +1,8 @@
 package com.example.mirror_abyss.world;
 
-import com.example.mirror_abyss.MirrorAbyss;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.WorldGenRegion;
 import net.minecraft.world.level.StructureManager;
 import net.minecraft.world.level.biome.BiomeSource;
@@ -38,12 +34,6 @@ public class MirrorAbyssChunkGenerator extends NoiseBasedChunkGenerator {
     @Override
     protected Codec<? extends NoiseBasedChunkGenerator> codec() {
         return CODEC;
-    }
-
-    /** Registers the codec under "mirror_abyss:mirror_abyss". */
-    public static void registerCodec() {
-        Registry.register(BuiltInRegistries.CHUNK_GENERATOR,
-                new ResourceLocation(MirrorAbyss.MOD_ID, "mirror_abyss"), CODEC);
     }
 
     /** Skeleton hook: override buildSurface to add void fissures / mirror crust. */

@@ -11,6 +11,7 @@ import com.example.mirror_abyss.networking.ModNetwork;
 import com.example.mirror_abyss.sound.ModSounds;
 import com.example.mirror_abyss.world.ModBiomes;
 import com.example.mirror_abyss.world.ModDimensions;
+import com.example.mirror_abyss.world.ModWorldgenCodecs;
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -53,6 +54,10 @@ public class MirrorAbyss {
 
         // ---- Worldgen batches (biomes; dimension type is fully data-driven JSON) ----
         ModBiomes.BIOMES.register(modBus);
+        // Custom chunk generator / biome source codecs - must go through
+        // DeferredRegister (manual Registry.register would hit "registry frozen").
+        ModWorldgenCodecs.CHUNK_GENERATORS.register(modBus);
+        ModWorldgenCodecs.BIOME_SOURCES.register(modBus);
 
         // ---- Lifecycle listeners ----
         modBus.addListener(this::commonSetup);
@@ -62,8 +67,7 @@ public class MirrorAbyss {
         // ---- Game event listeners ----
         forgeBus.register(this);
 
-        // Force static init of custom codecs / advancement triggers.
-        ModDimensions.init();
+        // Force static init of advancement triggers / networking.
         ModAdvancements.init();
         ModNetwork.register(); // SimpleChannel (ending choice packet)
     }

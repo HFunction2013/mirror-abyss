@@ -39,12 +39,8 @@ public final class ModDimensions {
     // The DimensionType itself is fully data-driven:
     //   data/mirror_abyss/dimension_type/mirror_abyss.json
     // (registered in code it would collide with the datapack entry).
-
-    /** Static init called from the mod constructor (registers custom codecs). */
-    public static void init() {
-        MirrorAbyssChunkGenerator.registerCodec();
-        MirrorAbyssBiomeSource.registerCodec();
-    }
+    // Custom chunk generator / biome source codecs are registered via
+    // ModWorldgenCodecs (DeferredRegister) - see that class.
 
     // ======================= Teleportation =======================
 
