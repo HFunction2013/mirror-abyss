@@ -4,10 +4,12 @@ import com.example.mirror_abyss.item.ModItems;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
@@ -62,7 +64,7 @@ public class MirageWalker extends Monster {
     }
 
     @Override
-    protected void populateDefaultEquipmentSlots(DifficultyInstance difficulty) {
+    protected void populateDefaultEquipmentSlots(RandomSource random, DifficultyInstance difficulty) {
         // Always "hold" a shard visually - fragments embedded in the body.
         this.setItemSlot(EquipmentSlot.MAINHAND, new ItemStack(ModItems.MIRROR_SHARD.get()));
     }
@@ -70,7 +72,7 @@ public class MirageWalker extends Monster {
     @Override
     public boolean hurt(DamageSource source, float amount) {
         // Briefly shatter into pieces: take reduced damage from projectiles.
-        if (source.isProjectile()) {
+        if (source.getDirectEntity() instanceof net.minecraft.world.entity.projectile.Projectile) {
             amount *= 0.5F;
         }
         return super.hurt(source, amount);
@@ -108,14 +110,14 @@ public class MirageWalker extends Monster {
         }
 
         private boolean playerHoldsShardAndStandsStill() {
-            Player target = this.target;
-            if (target == null) {
+            LivingEntity target = this.target;
+            if (!(target instanceof Player player)) {
                 return false;
             }
-            boolean holdsShard = !target.getMainHandItem().isEmpty()
-                    && target.getMainHandItem().is(ModItems.MIRROR_SHARD.get());
-            Vec3 vel = target.getDeltaMovement();
-            boolean standingStill = vel.lengthSqr() < 0.003D && target.onGround();
+            boolean holdsShard = !player.getMainHandItem().isEmpty()
+                    && player.getMainHandItem().is(ModItems.MIRROR_SHARD.get());
+            Vec3 vel = player.getDeltaMovement();
+            boolean standingStill = vel.lengthSqr() < 0.003D && player.onGround();
             return holdsShard && standingStill;
         }
     }

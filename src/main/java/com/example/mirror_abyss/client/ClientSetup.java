@@ -14,15 +14,15 @@ import com.example.mirror_abyss.client.renderer.VoidDevourerRenderer;
 import com.example.mirror_abyss.entity.ModEntities;
 import com.example.mirror_abyss.gui.FinalMirrorScreen;
 import com.example.mirror_abyss.gui.ModMenuTypes;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.model.geom.ModelLayerLocation;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.client.event.RegisterMenuScreensEvent;
+import net.minecraftforge.client.event.RegisterDimensionSpecialEffectsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.RegisterEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
 /**
  * ClientSetup - all client-side registrations.
@@ -62,21 +62,22 @@ public final class ClientSetup {
         event.registerEntityRenderer(ModEntities.VOID_BOLT.get(), VoidBoltRenderer::new);
     }
 
+    /** Menu screens are registered inside FMLClientSetupEvent (1.20.1 has no
+     *  RegisterMenuScreensEvent - MenuScreens.register is the vanilla way). */
     @SubscribeEvent
-    public static void registerScreens(RegisterMenuScreensEvent event) {
-        event.register(ModMenuTypes.FINAL_MIRROR_MENU.get(), FinalMirrorScreen::new);
+    public static void onClientSetup(FMLClientSetupEvent event) {
+        event.enqueueWork(() ->
+                MenuScreens.register(ModMenuTypes.FINAL_MIRROR_MENU.get(), FinalMirrorScreen::new));
     }
 
     /** Register the Mirror Abyss dimension special effects (sky/fog renderer).
      *  This class is @EventBusSubscriber(Dist.CLIENT), so this only ever runs
-     *  on the client - the server never loads MirrorAbyssEffects. */
+     *  on the client - the server never loads MirrorAbyssEffects. The key must
+     *  match the "effects" field of the dimension_type JSON. */
     @SubscribeEvent
-    public static void registerDimensionEffects(RegisterEvent event) {
-        if (event.getRegistryKey().equals(Registries.DIMENSION_EFFECTS)) {
-            event.register(Registries.DIMENSION_EFFECTS,
-                    new ResourceLocation(MirrorAbyss.MOD_ID, "mirror_abyss"),
-                    MirrorAbyssEffects::new);
-        }
+    public static void registerDimensionEffects(RegisterDimensionSpecialEffectsEvent event) {
+        event.register(new ResourceLocation(MirrorAbyss.MOD_ID, "mirror_abyss"),
+                new MirrorAbyssEffects());
     }
 
     private ClientSetup() {

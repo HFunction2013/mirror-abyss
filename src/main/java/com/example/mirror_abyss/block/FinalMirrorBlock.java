@@ -43,7 +43,7 @@ public class FinalMirrorBlock extends BaseEntityBlock {
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player,
                                  InteractionHand hand, BlockHitResult hit) {
         if (!level.isClientSide && player instanceof ServerPlayer serverPlayer) {
-            serverPlayer.openMenu(getMenuProvider(state, pos), pos);
+            serverPlayer.openMenu(getMenuProvider(state, pos));
         }
         return InteractionResult.sidedSuccess(level.isClientSide);
     }

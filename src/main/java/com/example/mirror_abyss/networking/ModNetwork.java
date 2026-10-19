@@ -3,7 +3,7 @@ package com.example.mirror_abyss.networking;
 import com.example.mirror_abyss.MirrorAbyss;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.network.NetworkRegistry;
-import net.minecraftforge.network.simplechan.SimpleChannel;
+import net.minecraftforge.network.simple.SimpleChannel;
 
 /**
  * ModNetwork - SimpleChannel for client-server packets.

@@ -27,4 +27,10 @@ public class FinalMirrorMenu extends AbstractContainerMenu {
     public boolean stillValid(Player player) {
         return true;
     }
+
+    /** No slots: quick-move never transfers anything. */
+    @Override
+    public net.minecraft.world.item.ItemStack quickMoveStack(Player player, int index) {
+        return net.minecraft.world.item.ItemStack.EMPTY;
+    }
 }

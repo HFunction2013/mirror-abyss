@@ -1,6 +1,9 @@
 package com.example.mirror_abyss.block;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -49,14 +52,16 @@ public class WatcherAltarBlock extends Block {
         // Consume one eye and teleport the player to the Void Sanctum.
         held.shrink(1);
         level.setBlock(pos, state.setValue(ACTIVATED, true), 3);
-        com.example.mirror_abyss.world.ModDimensions.teleportToVoidSanctum(player);
+        if (player instanceof ServerPlayer serverPlayer) {
+            com.example.mirror_abyss.world.ModDimensions.teleportToVoidSanctum(serverPlayer);
+        }
         // Reset after a short delay so the altar can be reused.
         level.scheduleTick(pos, this, 60);
         return InteractionResult.SUCCESS;
     }
 
     @Override
-    public void tick(BlockState state, Level level, BlockPos pos, net.minecraft.util.RandomSource random) {
+    public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         if (state.getValue(ACTIVATED)) {
             level.setBlock(pos, state.setValue(ACTIVATED, false), 3);
         }

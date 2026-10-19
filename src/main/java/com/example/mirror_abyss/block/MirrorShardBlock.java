@@ -62,7 +62,8 @@ public class MirrorShardBlock extends Block {
     }
 
     @Override
-    public void tick(BlockState state, Level level, BlockPos pos, net.minecraft.util.RandomSource random) {
+    public void tick(BlockState state, net.minecraft.server.level.ServerLevel level,
+                     BlockPos pos, net.minecraft.util.RandomSource random) {
         if (state.getValue(REFLECTING)) {
             level.setBlock(pos, state.setValue(REFLECTING, false), 3);
         }

@@ -51,8 +51,7 @@ public class MirrorAbyss {
         ModCreativeTabs.CREATIVE_TABS.register(modBus);
         ModSounds.SOUND_EVENTS.register(modBus);
 
-        // ---- Worldgen batches (dimension type, biomes; structures are fully data-driven jigsaw) ----
-        ModDimensions.DIMENSION_TYPES.register(modBus);
+        // ---- Worldgen batches (biomes; dimension type is fully data-driven JSON) ----
         ModBiomes.BIOMES.register(modBus);
 
         // ---- Lifecycle listeners ----

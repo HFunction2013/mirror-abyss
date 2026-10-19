@@ -55,7 +55,7 @@ public class VoidStabilizerBE extends BlockEntity {
         double radiusSq = radius * radius;
         BlockPos.betweenClosedStream(
                         pos.offset((int) -radius, (int) -radius, (int) -radius),
-                        pos.offset((int) radius, (int) radius, (int) radius)))
+                        pos.offset((int) radius, (int) radius, (int) radius))
                 .forEach(p -> {
                     BlockEntity be = level.getBlockEntity(p);
                     if (be instanceof VoidStabilizerBE stabilizer

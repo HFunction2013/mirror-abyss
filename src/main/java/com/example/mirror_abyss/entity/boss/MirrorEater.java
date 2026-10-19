@@ -222,7 +222,8 @@ public class MirrorEater extends Monster {
     /** Projectile reflection - phase 1 & 2: reflect projectiles back. */
     @Override
     public boolean hurt(DamageSource source, float amount) {
-        if (source.isProjectile() && this.entityData.get(PHASE) != PHASE_THREE) {
+        if (source.getDirectEntity() instanceof net.minecraft.world.entity.projectile.Projectile
+                && this.entityData.get(PHASE) != PHASE_THREE) {
             // Reflect: deal a fraction of the damage back to the attacker.
             if (source.getEntity() instanceof LivingEntity attacker) {
                 attacker.hurt(this.damageSources().thorns(this), amount * 0.5F);

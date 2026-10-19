@@ -2,6 +2,7 @@ package com.example.mirror_abyss;
 
 import com.example.mirror_abyss.block.ModBlocks;
 import com.example.mirror_abyss.item.ModItems;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
@@ -10,12 +11,13 @@ import net.minecraftforge.registries.RegistryObject;
 
 /**
  * Creative tab for all mirror_abyss content.
- * Registered via DeferredRegister<CreativeModeTab> (Forge 1.20.1).
+ * Registered via DeferredRegister<CreativeModeTab> on the vanilla
+ * CREATIVE_MODE_TAB registry (Forge 1.20.1).
  */
 public final class ModCreativeTabs {
 
     public static final DeferredRegister<CreativeModeTab> CREATIVE_TABS =
-            DeferredRegister.create(CreativeModeTab.class, MirrorAbyss.MOD_ID);
+            DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MirrorAbyss.MOD_ID);
 
     public static final RegistryObject<CreativeModeTab> MIRROR_ABYSS_TAB = CREATIVE_TABS.register(
             "mirror_abyss",

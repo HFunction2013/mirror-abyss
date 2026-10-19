@@ -133,8 +133,9 @@ structure code is needed (the old procedural `MirrorRuinsStructure` was removed)
 ## Known Gaps (TODO)
 
 - Entity models are placeholder cube geometry; replace with GeoModel
-  (GeckoLib) or Blockbench-exported models + real .ogg sound files (sounds
-  currently fall back to vanilla events via `sounds.json`).
+  (GeckoLib) or Blockbench-exported models. All 7 sound events now ship real
+  AI-generated .ogg files under `assets/mirror_abyss/sounds/` (no vanilla
+  event fallbacks).
 - Boss arena anchor (`teleportToVoidSanctum`) uses a fixed coordinate; wire it
   to the generated `void_sanctum` structure bounding box.
 - `MirrorAbyssChunkGenerator#buildSurface` keeps the surface rule minimal;

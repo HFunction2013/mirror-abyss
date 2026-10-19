@@ -59,7 +59,11 @@ public final class ModBiomes {
         spawns.addSpawn(monster,
                 new MobSpawnSettings.SpawnerData(com.example.mirror_abyss.entity.ModEntities.CRACK_SPIDER.get(), 80, 1, 2));
 
-        BiomeGenerationSettings.Builder gen = new BiomeGenerationSettings.Builder();
+        // 1.20.1 Builder requires HolderGetter args; they are only used when
+        // addFeature() is called. We add no features here (all tuning lives in
+        // the data-driven biome JSONs), so passing null is safe.
+        BiomeGenerationSettings.Builder gen =
+                new BiomeGenerationSettings.Builder(null, null);
         // Features are added via the data-driven biome JSONs (cleaner for tuning).
 
         return new Biome.BiomeBuilder()

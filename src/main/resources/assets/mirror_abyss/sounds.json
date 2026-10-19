@@ -3,63 +3,45 @@
     "subtitle": "subtitles.mirror_abyss.mirror_ambient",
     "sounds": [
       {
-        "name": "ambient.cave",
-        "type": "event"
+        "name": "mirror_abyss:mirror_ambient",
+        "stream": true
       }
     ]
   },
   "portal_activate": {
     "subtitle": "subtitles.mirror_abyss.portal_activate",
     "sounds": [
-      {
-        "name": "block.end_portal.spawn",
-        "type": "event"
-      }
+      "mirror_abyss:portal_activate"
     ]
   },
   "boss_roar": {
     "subtitle": "subtitles.mirror_abyss.boss_roar",
     "sounds": [
-      {
-        "name": "entity.ender_dragon.growl",
-        "type": "event"
-      }
+      "mirror_abyss:boss_roar"
     ]
   },
   "boss_charge": {
     "subtitle": "subtitles.mirror_abyss.boss_charge",
     "sounds": [
-      {
-        "name": "entity.ender_dragon.ambient",
-        "type": "event"
-      }
+      "mirror_abyss:boss_charge"
     ]
   },
   "void_bolt_launch": {
     "subtitle": "subtitles.mirror_abyss.void_bolt_launch",
     "sounds": [
-      {
-        "name": "entity.shulker.shoot",
-        "type": "event"
-      }
+      "mirror_abyss:void_bolt_launch"
     ]
   },
   "ending_seal": {
     "subtitle": "subtitles.mirror_abyss.ending_seal",
     "sounds": [
-      {
-        "name": "block.beacon.activate",
-        "type": "event"
-      }
+      "mirror_abyss:ending_seal"
     ]
   },
   "ending_fuse": {
     "subtitle": "subtitles.mirror_abyss.ending_fuse",
     "sounds": [
-      {
-        "name": "entity.wither.spawn",
-        "type": "event"
-      }
+      "mirror_abyss:ending_fuse"
     ]
   }
 }

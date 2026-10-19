@@ -7,13 +7,13 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.Tesselator;
 import com.mojang.blaze3d.vertex.VertexFormat;
 import net.minecraft.client.Camera;
+import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.renderer.DimensionSpecialEffects;
 import net.minecraft.client.renderer.GameRenderer;
-import net.minecraft.client.renderer.LevelRenderer;
-import net.minecraft.util.profiling.ProfilerFiller;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import org.joml.Matrix4f;
 
 import javax.annotation.Nullable;
 
@@ -22,9 +22,15 @@ import javax.annotation.Nullable;
  *
  * Renders a permanent-twilight sky: a deep purple dome fading to a pale
  * purple-gray horizon (the "purple-gray gradient" from the design doc).
- * Registered on the client against the dimension_effects registry under
- * "mirror_abyss:mirror_abyss", which the dimension_type JSON references
- * (see ClientSetup#registerDimensionEffects).
+ *
+ * Registration (1.20.1 Forge):
+ *   ClientSetup#registerDimensionEffects handles the
+ *   RegisterDimensionSpecialEffectsEvent and maps "mirror_abyss:mirror_abyss"
+ *   (the dimension_type JSON "effects" field) to this instance.
+ *
+ * The sky itself is drawn through the Forge extension hook
+ * IForgeDimensionSpecialEffects#renderSky - returning true fully suppresses
+ * the vanilla sky renderer for this dimension.
  *
  * Floating mirror-shard particles are spawned separately by ClientParticles
  * so they keep existing while the sky box is only drawn per frame.
@@ -61,11 +67,18 @@ public class MirrorAbyssEffects extends DimensionSpecialEffects {
      * Custom sky: a 6-face gradient box around the camera.
      * ceiling = near-black purple (#1a1228), top = deep twilight purple
      * (#2b203a), bottom = pale purple-gray (#847cb0), floor = void black.
+     *
+     * @return true - the vanilla sky renderer is fully replaced.
      */
     @Override
-    public void renderSky(LevelRenderer levelRenderer, float partialTick,
-                          PoseStack poseStack, Camera camera,
-                          ProfilerFiller profilerFiller, Vec3 skyColor) {
+    public boolean renderSky(ClientLevel level, int ticks, float partialTick,
+                             PoseStack poseStack, Camera camera,
+                             Matrix4f projectionMatrix, boolean isFoggy,
+                             Runnable setupFog) {
+        // Vanilla would run setupFog before drawing its own sky; we take over,
+        // so run it ourselves to leave the fog state consistent.
+        setupFog.run();
+
         RenderSystem.enableBlend();
         RenderSystem.defaultBlendFunc();
         RenderSystem.setShader(GameRenderer::getPositionColorShader);
@@ -102,6 +115,7 @@ public class MirrorAbyssEffects extends DimensionSpecialEffects {
 
         tesselator.end();
         RenderSystem.disableBlend();
+        return true; // suppress vanilla sky rendering
     }
 
     /** Emit one vertex with the given RGBA color. */

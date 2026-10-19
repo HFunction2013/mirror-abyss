@@ -2,7 +2,6 @@ package com.example.mirror_abyss.world;
 
 import com.example.mirror_abyss.MirrorAbyss;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Holder;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -11,19 +10,13 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.biome.Biome;
-import net.minecraft.world.level.biome.Biomes;
-import net.minecraft.world.level.border.WorldBorder;
 import net.minecraft.world.level.dimension.DimensionType;
 import net.minecraft.world.level.dimension.LevelStem;
 import net.minecraft.world.level.storage.DerivedLevelData;
 import net.minecraft.world.level.storage.LevelStorageSource;
 import net.minecraft.world.level.storage.WorldData;
-import net.minecraft.world.level.storage.WorldSaveDataStorage;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.level.BlockEvent;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
 
 /**
  * ModDimensions - registers the Mirror Abyss dimension type and the
@@ -43,51 +36,15 @@ public final class ModDimensions {
     public static final ResourceKey<Level> MIRROR_ABYSS_LEVEL = ResourceKey.create(
             Registries.DIMENSION, new ResourceLocation(MirrorAbyss.MOD_ID, "mirror_abyss"));
 
-    /** Dimension type registered in code (JSON files still drive the LevelStem). */
-    public static final DeferredRegister<DimensionType> DIMENSION_TYPES =
-            DeferredRegister.create(Registries.DIMENSION_TYPE, MirrorAbyss.MOD_ID);
-
-    public static final RegistryObject<DimensionType> MIRROR_ABYSS_DIM_TYPE = DIMENSION_TYPES.register(
-            "mirror_abyss",
-            () -> new DimensionType(
-                    // fixedTime: permanent twilight (6000 = noon-ish; use 12000 for dusk)
-                    java.util.OptionalLong.of(12000L),
-                    // hasSkylight, hasCeiling
-                    false, false,
-                    // ultraWarm, natural
-                    false, false,
-                    // coordinateScale
-                    1.0D,
-                    // bedWorks, respawnAnchorWorks
-                    false, true,
-                    // minY, height, logicalHeight
-                    -64, 384, 384,
-                    // infiniburn holder
-                    BuiltinHolder(Biomes.PLAINS),
-                    // effects: custom sky/fog renderer key
-                    java.util.Optional.of(MIRROR_ABYSS_LEVEL),
-                    // ambientLight
-                    0.1F,
-                    // monsterSettings
-                    new DimensionType.MonsterSettings(false, true, 0, 0)));
+    // The DimensionType itself is fully data-driven:
+    //   data/mirror_abyss/dimension_type/mirror_abyss.json
+    // (registered in code it would collide with the datapack entry).
 
     /** Static init called from the mod constructor (registers custom codecs). */
     public static void init() {
         MirrorAbyssChunkGenerator.registerCodec();
         MirrorAbyssBiomeSource.registerCodec();
     }
-
-    /** Placeholder helper - returns a Holder for the infiniburn argument. */
-    @SuppressWarnings("deprecation")
-    private static Holder<Biome> BuiltinHolder(ResourceKey<Biome> key) {
-        return net.minecraft.core.registries.BuiltinRegistries.BIOME.getHolderOrThrow(key);
-    }
-
-    /**
-     * Dimension special effects (custom sky / fog) are registered client-side
-     * by client.MirrorAbyssEffects#register() under "mirror_abyss:mirror_abyss"
-     * (see FMLClientSetupEvent in ClientSetup).
-     */
 
     // ======================= Teleportation =======================
 
