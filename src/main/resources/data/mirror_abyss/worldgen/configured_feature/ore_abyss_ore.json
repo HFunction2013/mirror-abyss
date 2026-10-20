@@ -1,4 +1,5 @@
 {
+  "__comment": "ConfiguredFeature: ore vein of abyss_ore replacing blocks tagged mirror_abyss:ore_replaceables.",
   "type": "minecraft:ore",
   "config": {
     "size": 6,

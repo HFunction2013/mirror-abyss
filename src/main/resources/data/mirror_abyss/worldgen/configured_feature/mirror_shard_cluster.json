@@ -1,19 +1,23 @@
 {
+  "__comment": "ConfiguredFeature: random_patch that scatters mirror_shard_block clusters. Note: random_patch's config.feature field expects an inline ConfiguredFeature (i.e. wrapped as {feature: {...}}), NOT a bare feature object.",
   "type": "minecraft:random_patch",
   "config": {
     "tries": 24,
     "xz_spread": 5,
     "y_spread": 2,
     "feature": {
-      "type": "minecraft:simple_block",
-      "config": {
-        "to_place": {
-          "type": "minecraft:simple_state_provider",
-          "state": {
-            "Name": "mirror_abyss:mirror_shard_block"
+      "feature": {
+        "type": "minecraft:simple_block",
+        "config": {
+          "to_place": {
+            "type": "minecraft:simple_state_provider",
+            "state": {
+              "Name": "mirror_abyss:mirror_shard_block"
+            }
           }
         }
-      }
+      },
+      "placement": []
     }
   }
 }
