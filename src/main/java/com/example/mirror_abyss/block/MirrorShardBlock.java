@@ -2,6 +2,7 @@ package com.example.mirror_abyss.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
@@ -48,6 +49,16 @@ public class MirrorShardBlock extends Block {
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext ctx) {
         return SHAPE;
+    }
+
+    /**
+     * Issue #2: sharp shards - 30% chance of void damage when stepped on.
+     * No stabilizer suppression: this is a puzzle block, not a fissure.
+     */
+    @Override
+    public void stepOn(Level level, BlockPos pos, BlockState state, Entity entity) {
+        VoidTouch.tryApply(level, pos, entity);
+        super.stepOn(level, pos, state, entity);
     }
 
     /**

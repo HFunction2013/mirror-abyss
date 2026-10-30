@@ -1,0 +1,8 @@
+{
+  "__comment": "Damage type for VoidTouch blocks (issue #2). Death message: death.attack.mirror_abyss.void_touch.",
+  "message_id": "mirror_abyss.void_touch",
+  "exhaustion": 0.1,
+  "scaling": "when_caused_by_living_non_player",
+  "effects": "hurt",
+  "death_message_type": "default"
+}

@@ -1,6 +1,7 @@
 package com.example.mirror_abyss.entity.Monster;
 
 import com.example.mirror_abyss.block.ModBlocks;
+import com.example.mirror_abyss.entity.MirrorMob;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundEvent;
@@ -26,7 +27,7 @@ import net.minecraft.world.level.block.state.BlockState;
  *
  * Drops: cracked_silk (1-2), spider_eye (rare), XP.
  */
-public class CrackSpider extends Monster {
+public class CrackSpider extends MirrorMob {
 
     private int crackCooldown = 0;
 

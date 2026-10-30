@@ -10,12 +10,11 @@ import net.minecraft.world.level.block.state.BlockState;
 /**
  * VoidFloorBlock - dangerous ground block.
  *
- * Any living entity standing on it takes void damage per tick, unless a
- * void_stabilizer is protecting the area (VoidStabilizerBlock#isStabilized).
+ * Living entities standing on it have a 30% chance (VoidTouch) to take void
+ * damage, unless a void_stabilizer is protecting the area
+ * (VoidStabilizerBlock#isStabilized).
  */
 public class VoidFloorBlock extends Block {
-
-    public static final float VOID_DAMAGE_PER_TICK = 2.0F; // 1 heart per tick
 
     public VoidFloorBlock(Properties properties) {
         super(properties);
@@ -23,11 +22,11 @@ public class VoidFloorBlock extends Block {
 
     @Override
     public void stepOn(Level level, BlockPos pos, BlockState state, Entity entity) {
-        if (!level.isClientSide && entity instanceof LivingEntity living) {
+        if (!level.isClientSide && entity instanceof LivingEntity) {
             if (VoidStabilizerBlock.isStabilized(level, pos)) {
                 return; // stabilizer suppresses the fissure
             }
-            living.hurt(level.damageSources().magic(), VOID_DAMAGE_PER_TICK);
+            VoidTouch.tryApply(level, pos, entity);
         }
         super.stepOn(level, pos, state, entity);
     }

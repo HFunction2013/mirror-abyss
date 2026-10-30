@@ -1,5 +1,6 @@
 package com.example.mirror_abyss.entity.Monster;
 
+import com.example.mirror_abyss.entity.MirrorMob;
 import com.example.mirror_abyss.item.ModItems;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundEvent;
@@ -33,7 +34,7 @@ import net.minecraft.world.phys.Vec3;
  *
  * Drops: mirror_shard (1-3), XP.
  */
-public class MirageWalker extends Monster {
+public class MirageWalker extends MirrorMob {
 
     public MirageWalker(EntityType<? extends MirageWalker> type, Level level) {
         super(type, level);
@@ -71,6 +72,10 @@ public class MirageWalker extends Monster {
 
     @Override
     public boolean hurt(DamageSource source, float amount) {
+        // Issue #1: fully immune inside the Mirror Abyss.
+        if (inOwnDimension()) {
+            return false;
+        }
         // Briefly shatter into pieces: take reduced damage from projectiles.
         if (source.getDirectEntity() instanceof net.minecraft.world.entity.projectile.Projectile) {
             amount *= 0.5F;

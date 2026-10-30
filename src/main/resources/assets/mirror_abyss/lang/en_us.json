@@ -23,6 +23,7 @@
   "entity.mirror_abyss.mirror_eater": "Mirror Eater",
   "entity.mirror_abyss.void_bolt": "Void Bolt",
   "effect.mirror_abyss.void_erosion": "Void Erosion",
+  "death.attack.mirror_abyss.void_touch": "%1$s was consumed by the void",
   "container.mirror_abyss.final_mirror": "Final Mirror",
   "gui.mirror_abyss.seal_void": "Seal the Void",
   "gui.mirror_abyss.fuse_reality": "Fuse Reality",

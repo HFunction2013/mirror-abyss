@@ -23,6 +23,7 @@
   "entity.mirror_abyss.mirror_eater": "噬镜者",
   "entity.mirror_abyss.void_bolt": "虚空弹",
   "effect.mirror_abyss.void_erosion": "虚空侵蚀",
+  "death.attack.mirror_abyss.void_touch": "%1$s被虚空吞噬了",
   "container.mirror_abyss.final_mirror": "终焉之镜",
   "gui.mirror_abyss.seal_void": "封印虚空",
   "gui.mirror_abyss.fuse_reality": "融合现实",

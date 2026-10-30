@@ -2,6 +2,7 @@ package com.example.mirror_abyss.entity.Monster;
 
 import com.example.mirror_abyss.effect.ModEffects;
 import com.example.mirror_abyss.entity.ModEntities;
+import com.example.mirror_abyss.entity.MirrorMob;
 import com.example.mirror_abyss.entity.VoidBolt;
 import com.example.mirror_abyss.sound.ModSounds;
 import net.minecraft.sounds.SoundEvent;
@@ -31,7 +32,7 @@ import net.minecraft.world.phys.Vec3;
  *
  * Drops: void_essence (1-2), void_eye (rare ~4%), XP.
  */
-public class VoidDevourer extends Monster implements RangedAttackMob {
+public class VoidDevourer extends MirrorMob implements RangedAttackMob {
 
     public VoidDevourer(EntityType<? extends VoidDevourer> type, Level level) {
         super(type, level);
