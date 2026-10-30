@@ -428,15 +428,41 @@ def entity_void_devourer():
 
 
 def entity_crack_spider():
-    """Rock spider with purple fissure lines."""
+    """Rock spider with purple fissure lines.
+
+    UV layout matches CrackSpiderModel (16x16 texture):
+      - (0,0)-(4,4)  head: rocky square with two red eyes at (2,1),(2,2)
+      - (4,0)-(12,6) body: rocky base with jagged purple crack lines
+      - (0,8)-(4,9)  legs: dark rock bar with a purple fissure stripe
+                    (shared by all 8 leg cubes)
+    """
     a = new_img((70, 74, 84, 255))
-    a = speckle(a, [(50, 54, 62), (90, 95, 105)], 60)
-    a = crack_lines(a, (122, 60, 255, 255), 4)
-    # eyes
-    a[4, 4] = (255, 255, 255, 255)
-    a[4, 11] = (255, 255, 255, 255)
-    a[4, 4] = (255, 120, 120, 255)
-    a[4, 11] = (255, 120, 120, 255)
+
+    # Body region (4..11, 0..5): rock speckle + purple crack lines.
+    a[0:6, 4:12] = (66, 70, 80, 255)
+    for _ in range(40):
+        x = 4 + int(RNG.integers(0, 8))
+        y = int(RNG.integers(0, 6))
+        c = [(50, 54, 62), (90, 95, 105)][int(RNG.integers(0, 2))]
+        a[y, x] = _c(c)
+    for _ in range(4):
+        x = 4 + int(RNG.integers(0, 8))
+        y = int(RNG.integers(0, 6))
+        for _ in range(RNG.integers(3, 6)):
+            a[y, x] = (122, 60, 255, 255)
+            y = max(0, min(5, y + int(RNG.integers(-1, 2))))
+            x = max(4, min(11, x + int(RNG.integers(-1, 2))))
+
+    # Head region (0..3, 0..3): slightly lighter rock + two red eyes.
+    a[0:4, 0:4] = (76, 80, 90, 255)
+    a[1:3, 1] = (255, 120, 120, 255)
+    a[1:3, 2] = (255, 120, 120, 255)
+
+    # Leg region (0..3, 8..9): dark rock bar with a purple fissure stripe.
+    a[8:10, 0:4] = (60, 64, 74, 255)
+    a[8, 0:4] = (122, 60, 255, 255)
+    a[9, 0:4] = (90, 95, 105, 255)
+
     return a
 
 

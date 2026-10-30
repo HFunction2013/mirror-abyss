@@ -23,3 +23,4 @@ Thumbs.db
 
 # Local artifacts
 mcmodsrepo/
+tools/__pycache__/
